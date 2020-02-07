@@ -1,3 +1,4 @@
 .env
 bin/
 src/models/<yourmodel>
+log.txt
