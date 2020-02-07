@@ -1,0 +1,11 @@
+  Verifying dependencies for app@1.0.3
+      Info: Dependency on jester@any version already satisfied
+  Verifying dependencies for jester@0.4.3
+      Info: Dependency on https://github.com/timotheecour/asynctools@#pr_fix_compilation already satisfied
+  Verifying dependencies for asynctools@#pr_fix_compilation
+      Info: Dependency on norm@>= 1.0.16 already satisfied
+  Verifying dependencies for norm@1.1.0
+      Info: Dependency on ndb@>= 0.19.8 already satisfied
+  Verifying dependencies for ndb@0.19.8
+ Installing dotenv@>= 1.1.1
+Downloading https://github.com/euantorano/dotenv.nim using git
