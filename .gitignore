@@ -2,3 +2,5 @@
 bin/
 src/models/<yourmodel>
 log.txt
+*.exe
+__pycache__/

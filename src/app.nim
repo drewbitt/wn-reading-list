@@ -1,7 +1,7 @@
 import jester
+include routes/MainRouter
 
 routes:
-  get "/":
-    resp "Bawo Ni?"
+  extend main, ""
 
 runForever()

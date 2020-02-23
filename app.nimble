@@ -1,9 +1,9 @@
 # Package
 
-version       = "1.0.3"
-author        = "Adeoluwa Adejumo"
-description   = "Sample Web App"
-license       = "MIT"
+version       = "1.0.0"
+author        = "drewbitt"
+description   = ""
+license       = "Apache"
 srcDir        = "src"
 binDir        = "bin"
 bin           = @["app"]
@@ -11,7 +11,7 @@ bin           = @["app"]
 
 # Dependencies
 
-requires "nim >= 1.0.2", "jester", "norm >= 1.0.16", "dotenv >= 1.1.1"
+requires "nim >= 1.0.2", "jester", "norm >= 1.0.16", "dotenv >= 1.1.1, nimpy >= 0.1.0"
 
 # Tasks
 
