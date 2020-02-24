@@ -6,3 +6,5 @@ router main:
         resp MainController.index()
     get "/test":
         resp "test"
+    get "/search/@search_string":
+        resp MainController.search(@"search_string")

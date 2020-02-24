@@ -3,7 +3,7 @@
 version       = "1.0.0"
 author        = "drewbitt"
 description   = ""
-license       = "Apache"
+license       = "GPL"
 srcDir        = "src"
 binDir        = "bin"
 bin           = @["app"]
