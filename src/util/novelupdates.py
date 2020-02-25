@@ -1,8 +1,3 @@
-'''
-NovelUpdates.py
-Handles all NovelUpdates information
-'''
-
 # Copyright (C) 2018  Nihilate
 #
 # This program is free software: you can redistribute it and/or modify
@@ -17,8 +12,6 @@ Handles all NovelUpdates information
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-import difflib
 
 import requests
 import traceback
@@ -56,6 +49,40 @@ def getLightNovelURL(searchText):
                 lnList.append(data)
         return lnList
 
+    except Exception as e:
+        print(e)
+        req.close()
+        return None
+
+
+# Copyright (C) 2020 drewbitt
+# Returns dict of author and num chapters
+def getNovelInfo(novel_url):
+    html = ''
+    try:
+        for i in range(0, 5):
+            try:
+                html = requests.get(
+                    url=novel_url,
+                    timeout=10
+                )
+                break
+            except Exception:
+                print(traceback.format_exc())
+        req.close()
+
+        nu = pq(html.text)
+
+        authorList = []
+
+        for author in nu.find('#showauthors > a'):
+            name = author.text
+            if name:
+                authorList.append(name)
+
+        latest_chapter = nu.find("a.chp-release")[0].text
+
+        return {'author': authorList, 'num_chapters': latest_chapter}
     except Exception as e:
         print(e)
         req.close()

@@ -36,6 +36,7 @@ type
 
 
 # Returns sequence of SearchResult objects from querying all lncrawl sites for novels
+# TODO: Needs a timeout
 proc lncrawl_search*(search_string: string): seq[LncrawlSearchResult]=
      try:
           return lncrawl.search(search_string).to(seq[LncrawlSearchResult])
