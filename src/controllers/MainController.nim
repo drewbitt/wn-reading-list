@@ -4,9 +4,6 @@ import ../util/lncrawl
 import ../util/goodreads
 import strutils, json
 
-func index*(): string =
-    return "hello"
-
 proc `%`(p: tuple[title: string, author: string, url: string, num_chapters: string]): JsonNode =
     result = %[("title", %p.title), ("author", %p.author), ("url", %p.url), ("num_chapters", %p.num_chapters)]
 
@@ -87,9 +84,6 @@ proc gr(gr_results: seq[GoodreadsResult]): seq[tuple[title: string, author: stri
     return list
 
 proc search*(search_string: string): JsonNode =
-# proc search*(search_string: string): (tuple[novelupdates: seq[tuple[title: string, author: string, url: string, num_chapters: string]]],
-# tuple[lncrawl: seq[tuple[title: string, author: string, url: string, num_chapters: string]]],
-# tuple[goodreads: seq[tuple[title: string, author: string, url: string, pages: string]]]) =
     # For now, I want: Title, Author, Url, Num chapters
     # Num chapters needs to be string because NU has them as strings (c, v etc.)
     # TODO: Add cover urls if wanted after progress is made in frontend

@@ -2,7 +2,7 @@
 
 version       = "1.0.0"
 author        = "drewbitt"
-description   = ""
+description   = "WN-Reading-List backend"
 license       = "GPL"
 srcDir        = "src"
 binDir        = "bin"

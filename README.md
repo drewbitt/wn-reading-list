@@ -1,46 +1,49 @@
-# Project Name
+# WN-Reading-List-Backend
 
-<!-- Don't forget to add your badges (License, CI, Code coverage) -->
+[Frontend](https://gitgud.io/wn-reading-list/wn-reading-list-frontend/) | [Frontend Github mirror](https://github.com/wn-reading-list/wn-reading-list-frontend)
 
-Project name is a <utility/tool/feature> that allows <insert_target_audience> to do <action/task_it_does>.
+[Jester](https://github.com/dom96/jester) app that utilizes several Python libraries using [nimpy](https://github.com/yglukhov/nimpy) to search for books from various sources: Novelupdates, Goodreads, and all 22 supported sites of lightnovel-crawler.
 
-<!-- GIF Demo / Screenshot here -->
+## Why?
 
+First project in nim. Using nim as the "glue" language for python instead of the other way around was an interesting anti-pattern to explore.
 
-Additional line of information text about what the project does. Your introduction should be around 2 or 3 sentences. Don't go overboard, people won't read it.
+## Dependencies
 
-## Features
+Depends on the Python package [lightnovel-crawler](https://github.com/drewbitt/lightnovel-crawler). It has been forked to remove console prints and allow for module usage. Install by going inside the `lightnovel-crawler` directory and running `python setup.py install`.
 
-[x] Feature 1
-[x] Feature 2 
-[ ] Feature 3
+Additionally, create an .env file with the following variables:
 
-## Installation
+```
+GOODREADS_DEVELOPER_KEY=KEY_HERE
+```
 
-Use the package manager [nimble](https://pip.pypa.io/en/stable/) to install foobar.
+## Installation & Usage
+
+Use the package manager [nimble](https://pip.pypa.io/en/stable/).
+
+Build:
+
+``` bash
+nimble build app
+```
+
+Run:
 
 ```bash
-nimble install foobar
+nimble run app
 ```
-
-## Usage
-
-```nim
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## Contact
-twitter: @nobody
-wechat: xyz
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+
+[GNU](LICENSE.md)
+
+## Contributing
+
+Bug reporting is welcome on the Github mirror, but all code contributing should be on the main project. Please be sure to check there for issues before reporting on Github.
+
+## Contact
+
+Project Link: [https://gitgud.io/wn-reading-list/wn-reading-list-backend](https://gitgud.io/wn-reading-list/wn-reading-list-backend)
+
+Mirrored to: [https://github.com/wn-reading-list/wn-reading-list-backend](https://github.com/wn-reading-list/wn-reading-list-backend)
