@@ -38,7 +38,7 @@ type
 # TODO: Avoid usage of PyObject -> JsonNode -> Object containing JsonNodes..., or cleanup with additional
 # object that looks at JsoNode type and converts text to that type
 
-# Returns sequence of Result objects containing books from a goodreads search.
+# Returns sequence of Result objects containing books from a goodreads search. Max 20 results.
 # JsonNode objects field example:
     # "@type": "integer",
     # "#text": "340"
@@ -52,6 +52,16 @@ proc goodreads_search*(search_string: string): seq[GoodreadsResult] =
         except:
             discard
         let deep_results = results["results"]["work"]
+
+        # Average rating can sometimes be a JObject of "average_rating": {"@type": "float", "#text": "0.0"}
+        var count = 0   # can't do mitems since not JArray so make a counter
+        for i in deep_results:
+            if i["average_rating"].kind == JObject:
+                let text = i["average_rating"]["#text"]
+                delete(deep_results[count], "average_rating")
+                add(deep_results[count], "average_rating",  %* text.to(string))
+            count = count + 1
+
         return to(deep_results, seq[GoodreadsResult])
     except:
         let

@@ -7,6 +7,12 @@ import strutils, json
 func index*(): string =
     return "hello"
 
+proc `%`(p: tuple[title: string, author: string, url: string, num_chapters: string]): JsonNode =
+    result = %[("title", %p.title), ("author", %p.author), ("url", %p.url), ("num_chapters", %p.num_chapters)]
+
+proc `%`(p: tuple[title: string, author: string, url: string, pages: string]): JsonNode =
+    result = %[("title", %p.title), ("author", %p.author), ("url", %p.url), ("pages", %p.pages)]
+
 proc lncrawl(lncrawl_results: seq[LncrawlSearchResult]):
     seq[tuple[title: string, author: string, url: string, num_chapters: string]] =
     # For each novel name matched, we get multiple sites.
@@ -31,8 +37,9 @@ proc lncrawl(lncrawl_results: seq[LncrawlSearchResult]):
                 highest = info.chapters.len
                 highestResult = FullInfo(info: info, url: item.url)
 
-        list.add((title: highestResult.info.title, author: highestResult.info.author,
-                       url: highestResult.url, num_chapters: $highest))
+        if highestResult.info.title.len != 0:
+            list.add((title: highestResult.info.title, author: highestResult.info.author,
+                    url: highestResult.url, num_chapters: $highest))
     return list
 
 proc nu(nu_results: seq[NUResult]):
@@ -79,18 +86,22 @@ proc gr(gr_results: seq[GoodreadsResult]): seq[tuple[title: string, author: stri
 
     return list
 
-proc search*(search_string: string): string =
+proc search*(search_string: string): JsonNode =
+# proc search*(search_string: string): (tuple[novelupdates: seq[tuple[title: string, author: string, url: string, num_chapters: string]]],
+# tuple[lncrawl: seq[tuple[title: string, author: string, url: string, num_chapters: string]]],
+# tuple[goodreads: seq[tuple[title: string, author: string, url: string, pages: string]]]) =
     # For now, I want: Title, Author, Url, Num chapters
     # Num chapters needs to be string because NU has them as strings (c, v etc.)
+    # TODO: Add cover urls if wanted after progress is made in frontend
 
-    # let gr_results = goodreads_search(search_string)
+    let gr_results = goodreads_search(search_string)
     let nu_results = nu_search(search_string)
     let lncrawl_results = lncrawl_search(search_string)
 
-    # echo nu(nu_results)
-    # echo nu_results
-    # echo gr_results
-    # echo lncrawl_results
+    let cleaned_gr = gr(gr_results)
+    let cleaned_nu = nu(nu_results)
+    let cleaned_lncrawl = lncrawl(lncrawl_results)
 
-    let results = lncrawl(lncrawl_results)
-    return $results
+    return %({"novelupdates": %cleaned_nu, "lncrawl": %cleaned_lncrawl, "goodreads": %cleaned_gr})
+
+# TODO: Offer endpoint to return all lncrawl results for a novel (for manually choosing)
