@@ -2,4 +2,5 @@ git+git://github.com/drewbitt/lightnovel-crawler@master
 git+git://github.com/digfish/goodreads-api-client-python
 # NU, GR page number requirement
 pyquery==1.4.1
-cloudscraper==1.2.33
+# NU can have cloudfare
+cloudscraper>=1.2.33

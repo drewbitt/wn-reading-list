@@ -67,7 +67,7 @@ proc goodreads_search*(search_string: string): seq[GoodreadsResult] =
         let
             e = getCurrentException()
             msg = getCurrentExceptionMsg()
-        echo "Got exception ", repr(e), " with message ", msg
+        echo "Got exception in goodreads search", repr(e), " with message ", msg
         return
 
 # Returns total num of pages in goodreads book from srcaping URL since not in API

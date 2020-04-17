@@ -18,9 +18,7 @@ type
 # Limit 25 results (first page)
 proc nu_search*(search_string: string): seq[NUResult] =
     try:
-        let x = nu.getLightNovelURL(search_string).to(seq[NUResult])
-        echo x
-        return x
+        return nu.getLightNovelURL(search_string).to(seq[NUResult])
     except:
         return
 

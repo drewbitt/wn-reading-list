@@ -4,6 +4,9 @@ import cloudscraper
 
 scraper = cloudscraper.create_scraper()
 
+# Not closing session so that they can share a session if cloudfare is enabled;
+# this exits immediately so doesn't matter if I close
+
 def getLightNovelURL(searchText):
     html = ''
     try:
@@ -14,7 +17,6 @@ def getLightNovelURL(searchText):
             )
         except Exception:
             print(traceback.format_exc())
-        scraper.close()
 
         nu = pq(html.text)
 
@@ -31,7 +33,6 @@ def getLightNovelURL(searchText):
         return lnList
     except Exception as e:
         print(e)
-        scraper.close()
         return None
 
 # Returns dict of author and num chapters
@@ -44,7 +45,6 @@ def getNovelInfo(novel_url):
             )
         except Exception:
             print(traceback.format_exc())
-        scraper.close()
 
         nu = pq(html.text)
 
@@ -60,5 +60,4 @@ def getNovelInfo(novel_url):
         return {'author': authorList, 'num_chapters': latest_chapter}
     except Exception as e:
         print(e)
-        scraper.close()
         return None
