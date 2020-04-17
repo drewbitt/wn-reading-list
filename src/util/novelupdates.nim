@@ -30,5 +30,3 @@ proc nu_get_novel_info*(url: string): NUInfoResult =
         return nu.getNovelInfo(url).to(NUInfoResult)
     except:
         return
-
-discard nu_search("Avarice")
