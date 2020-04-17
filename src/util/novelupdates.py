@@ -13,27 +13,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import requests
 import traceback
 from pyquery import PyQuery as pq
+import cloudscraper
 
-req = requests.Session()
-
+scraper = cloudscraper.create_scraper()
 
 def getLightNovelURL(searchText):
     html = ''
     try:
         searchText = searchText.replace(' ', '+')
-        for i in range(0, 5):
-            try:
-                html = requests.get(
-                    url=f"http://www.novelupdates.com/?s={searchText}",
-                    timeout=10
-                )
-                break
-            except Exception:
-                print(traceback.format_exc())
-        req.close()
+        try:
+            html = scraper.get(
+                url=f"http://www.novelupdates.com/?s={searchText}"
+            )
+        except Exception:
+            print(traceback.format_exc())
+        scraper.close()
 
         nu = pq(html.text)
 
@@ -48,10 +44,9 @@ def getLightNovelURL(searchText):
                         'url': url}
                 lnList.append(data)
         return lnList
-
     except Exception as e:
         print(e)
-        req.close()
+        scraper.close()
         return None
 
 
@@ -60,16 +55,13 @@ def getLightNovelURL(searchText):
 def getNovelInfo(novel_url):
     html = ''
     try:
-        for i in range(0, 5):
-            try:
-                html = requests.get(
-                    url=novel_url,
-                    timeout=10
-                )
-                break
-            except Exception:
-                print(traceback.format_exc())
-        req.close()
+        try:
+            html = scraper.get(
+                url=novel_url
+            )
+        except Exception:
+            print(traceback.format_exc())
+        scraper.close()
 
         nu = pq(html.text)
 
@@ -85,5 +77,5 @@ def getNovelInfo(novel_url):
         return {'author': authorList, 'num_chapters': latest_chapter}
     except Exception as e:
         print(e)
-        req.close()
+        scraper.close()
         return None

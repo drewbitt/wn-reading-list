@@ -18,7 +18,9 @@ type
 # Limit 25 results (first page)
 proc nu_search*(search_string: string): seq[NUResult] =
     try:
-        return nu.getLightNovelURL(search_string).to(seq[NUResult])
+        let x = nu.getLightNovelURL(search_string).to(seq[NUResult])
+        echo x
+        return x
     except:
         return
 
@@ -28,3 +30,5 @@ proc nu_get_novel_info*(url: string): NUInfoResult =
         return nu.getNovelInfo(url).to(NUInfoResult)
     except:
         return
+
+discard nu_search("Avarice")

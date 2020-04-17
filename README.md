@@ -2,7 +2,7 @@
 
 [Frontend](https://gitgud.io/wn-reading-list/wn-reading-list-frontend/) | [Frontend Github mirror](https://github.com/wn-reading-list/wn-reading-list-frontend)
 
-[Jester](https://github.com/dom96/jester) app that utilizes several Python libraries using [nimpy](https://github.com/yglukhov/nimpy) to search for books from various sources: Novelupdates, Goodreads, and all 22 supported sites of lightnovel-crawler.
+[Jester](https://github.com/dom96/jester) app that utilizes several Python libraries using [nimpy](https://github.com/yglukhov/nimpy) to search for books from various sources: Novelupdates, Goodreads, and all 20+ supported sites of lightnovel-crawler.
 
 ## Why?
 
@@ -33,6 +33,8 @@ Run:
 ```bash
 nimble run app
 ```
+
+Before deployment in production, uncomment `-d:release` in `nim.cfg`
 
 ## License
 
