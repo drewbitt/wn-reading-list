@@ -3,4 +3,7 @@ bin/
 src/models/<yourmodel>
 log.txt
 *.exe
+
+# python
+*.pyc
 __pycache__/

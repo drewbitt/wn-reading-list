@@ -13,7 +13,7 @@ def getLightNovelURL(searchText):
         searchText = searchText.replace(' ', '+')
         try:
             html = scraper.get(
-                url=f"http://www.novelupdates.com/?s={searchText}"
+                url="http://www.novelupdates.com/?s={searchText}"
             )
         except Exception:
             print(traceback.format_exc())
@@ -61,3 +61,5 @@ def getNovelInfo(novel_url):
     except Exception as e:
         print(e)
         return None
+
+getLightNovelURL("Avarice")
