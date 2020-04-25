@@ -10,7 +10,7 @@ First project in nim. Using nim as the "glue" language for python instead of the
 
 ## Setup
 
-Depends on the Python package [lightnovel-crawler](https://github.com/drewbitt/lightnovel-crawler). It has been forked to remove console prints and allow for module usage. Install by going inside the `lightnovel-crawler` directory and running `python setup.py install`.
+Depends on the Python package [lightnovel-crawler](https://github.com/drewbitt/lightnovel-crawler). It has been forked to remove console prints and allow for module usage. Install by either using `requirements.txt` or by going inside the `lightnovel-crawler` directory and running `python setup.py install`.
 
 Additionally, create an .env file with the following variables:
 

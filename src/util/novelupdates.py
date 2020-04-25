@@ -4,6 +4,7 @@ import cloudscraper
 
 scraper = cloudscraper.create_scraper()
 
+# TODO: Actually, the share doesn't work
 # Not closing session so that they can share a session if cloudfare is enabled;
 # this exits immediately so doesn't matter if I close
 
@@ -61,5 +62,3 @@ def getNovelInfo(novel_url):
     except Exception as e:
         print(e)
         return None
-
-getLightNovelURL("Avarice")
